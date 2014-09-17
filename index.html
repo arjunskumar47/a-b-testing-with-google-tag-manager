@@ -30,10 +30,16 @@
         <h1>A/B testing script with Google Tag Manager</h1>
       </header>
       <section role="main">
+        <div class="alert alert-warning alert-dismissible" role="alert">
+          <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+          <strong>Heads up!</strong> This page is not quite finished yet. I'm still rewriting the text.
+        </div>
         <p><em>Made by <a href="http://vreeman.com">Simon Vreeman</a>.</em></p>
-        <p>It is a pretty simple script for <strong>A/B testing with <a href="https://www.google.com/tagmanager/" target="blank">Google Tag Manager</a></strong> and <a href="http://www.google.com/analytics/" target="blank">Google Analytics</a> for measuring and analysis. It uses the <a href="https://support.google.com/tagmanager/answer/2644341?hl=en#RandomNumber" target="blank">random macro</a> of Google Tag Manager, that returns a number between 0 and 2147483647. It is <a href="http://www.random.org/randomness/" target="blank">pseudo random</a>, but I run some tests and find that it is random enough for A/B testing.</p>
-        <p>The biggest disadvantages of A/B testing with Google Tag Manager (not necessarily TMS in general) is that GTM loads the script asynchronous. That will cause a flicker effect on the webpage. The users can notice that something has changed and it is likely that they will behave different to it. Meaning that you will get mixed results.</p>
-        <p>Other tag management systems have the option to load specific tags synchrone. With some small tweaks this script will work in other tag managers.</p>
+        <p>It is a pretty simple and straightforward script for <strong>A/B testing with <a href="https://www.google.com/tagmanager/" target="blank">Google Tag Manager</a></strong> and <a href="http://www.google.com/analytics/" target="blank">Google Analytics</a> for measuring and analysis. It uses the <a href="https://support.google.com/tagmanager/answer/2644341?hl=en#RandomNumber" target="blank">random macro</a> and dataLayer of Google Tag Manager. The Random Number macro returns a number between 0 and 2147483647. It is <a href="http://www.random.org/randomness/" target="blank">pseudo random</a>, but I run some tests and find that it is random enough for A/B testing.</p>
+        <p>The collected data is stored in the dataLayer, using a custom event. With custom macros the data can be send to Google Analytics. I will explain that later on in detail.</p>
+        <p>The biggest disadvantages of A/B testing with Google Tag Manager (not necessarily TMS in general) is that GTM loads the script asynchronous. That will cause a flicker effect on the webpage. The users can notice that something has changed and it is likely that they will behave different to it. Meaning that you will get mixed results. Just a headups before you start!</p>
+        <p>But of course async loading is great for the performance of the website in general. Other tag management systems have the option to load specific tags synchrone. With some small tweaks this script will work in other tag managers.</p>
+        <p class="text-center"><a class="btn btn-lg btn-success" role="button" href="https://github.com/simonvreeman/a-b-testing-with-google-tag-manager/archive/master.zip"><i class="fa fa-download"></i> Download the free script</a></p>
         <h4>Google Analytics tracking</h4>
         <p>The script will send non-interaction events, custom dimensions and/or custom variables to the classic (ga.js) or universal (analytics.js) version Google Analytics. You can change that for your own needs. The custom variable is set for slot 5. When using the custom dimension, make sure you <a href="https://support.google.com/analytics/answer/2709829?hl=en" target="blank">configure it</a> in the Admin setting of your property. It is set for slot 20.</p>
         <h4>Google Tag Manager settings</h4>
@@ -41,16 +47,18 @@
         <p>When you do A/B testing you want to set a certain time of the test. You need enough users and conversions to get a good significance rate (95% or more). When creating the custom HTML tag in Google Tag Manager you can also set a custom tag firing schedule. That means you can set the dates when the test has to start and when it has to stop. You can find it under Advanced Settings, at the bottom of the page.</p>
         <p>The traffic is equal distributed among the two variations of the A/B test. But of course you have the possibility to change that for your own needs. <a href="http://dan-russell.com/2013/03/sampling-a-percentage-of-your-users-with-google-tag-manager/" target="blank">Dan Russell</a> explained that pretty well.</p>
         <p>Want to know and learn more about Google Tag Manager. Definitely take a look at the blog of <a href="http://www.simoahava.com" target="blank">Simo Ahava</a>.</p>
-        <h3>Requirements</h3>
+        <h3>Requirements for success</h3>
         <ul>
-        <li>Google Tag Manager</li>
+          <li>Google Tag Manager (of cource)</li>
+          <li><a href="#random">{{Random Number}} macro</a></li>
+          <li></li>
+          <li>jQuery (which is usaually already loaded on the site)</li>
+          <li><a href="https://github.com/carhartl/jquery-cookie" target="blank">jQuery Cookie by carhartl</a> - A minified version (1.4.1) is included in the script.</li>
         </ul>
-        <p>* <a href="#random">{{Random Number}} macro</a></p>
-        <ul>
-        <li>jQuery</li>
-        <li><a href="https://github.com/carhartl/jquery-cookie" target="blank">jQuery Cookie by carhartl</a> - A minified version (1.4.1) is included in the script.</li>
-        <li>Code can be at most 15,360 characters. Use an external .js file to load more code.</li>
-        </ul>
+
+        <p>Code can be at most 15,360 characters. Use an external .js file to load more code.</p>
+        
+        <p class="text-center"><a class="btn btn-lg btn-success" role="button" href="https://github.com/simonvreeman/a-b-testing-with-google-tag-manager/archive/master.zip"><i class="fa fa-download"></i> Download the free script</a></p>
         <h3 id="random">Create the {{Random Number}} macro in Google Tag Manager</h3>
         <p><em>To use the script, you need to create the Random Number macro.</em></p>
         <ol>
@@ -72,15 +80,10 @@
         <li>Turn the debug off.</li>
         <li>Create a new version and publish it.</li>
         </ol>
-        <h2>Contact</h2>
-        <ul>
-        <li><a href="https://plus.google.com/+SimonVreeman?rel=author">Google+</a></li>
-        <li><a href="https://twitter.com/vreeman">Twitter</a></li>
-        <li><a href="mailto:simon@vreeman.com">Email</a></li>
-        </ul>
+        <p class="text-center"><a class="btn btn-lg btn-success" role="button" href="https://github.com/simonvreeman/a-b-testing-with-google-tag-manager/archive/master.zip"><i class="fa fa-download"></i> Download the free script</a></p>
         <h2>License</h2>
         <p>The MIT License (MIT)</p>
-        <p>Copyright (c) 2014 Simon Vreeman</p>
+        <p>Copyright (c) 2014 <a href="http://vreeman.com">Simon Vreeman</a></p>
         <p>Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</p>
         <p>The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.</p>
         <p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
