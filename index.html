@@ -41,7 +41,7 @@
         <p>But of course async loading is great for the performance of the website in general. Other tag management systems have the option to load specific tags synchrone. With some small tweaks this script will work in other tag managers.</p>
         <p class="text-center"><a class="btn btn-lg btn-success" role="button" href="https://github.com/simonvreeman/a-b-testing-with-google-tag-manager/archive/master.zip"><i class="fa fa-download"></i> Download the free script</a></p>
         <h4>Google Analytics tracking</h4>
-        <p>The script will send non-interaction events, custom dimensions and/or custom variables to the classic (ga.js) or universal (analytics.js) version Google Analytics. You can change that for your own needs. The custom variable is set for slot 5. When using the custom dimension, make sure you <a href="https://support.google.com/analytics/answer/2709829?hl=en" target="blank">configure it</a> in the Admin setting of your property. It is set for slot 20.</p>
+        <p>The data is send to the dataLayer of Google Tag Manager. You need to create an extra tag to get that data and send it to Google Analytics. I will explain how to do it for an event.</p>
         <h4>Google Tag Manager settings</h4>
         <p>Use the rules in Google Tag Manager to set where the test on the website should be running and how much of the traffic will be included. You can use the same random macro to set how much of the traffic should be in the test.</p>
         <p>When you do A/B testing you want to set a certain time of the test. You need enough users and conversions to get a good significance rate (95% or more). When creating the custom HTML tag in Google Tag Manager you can also set a custom tag firing schedule. That means you can set the dates when the test has to start and when it has to stop. You can find it under Advanced Settings, at the bottom of the page.</p>
@@ -49,13 +49,12 @@
         <p>Want to know and learn more about Google Tag Manager. Definitely take a look at the blog of <a href="http://www.simoahava.com" target="blank">Simo Ahava</a>.</p>
         <h3>Requirements for success</h3>
         <ul>
-          <li>Google Tag Manager (of cource)</li>
-          <li><a href="#random">{{Random Number}} macro</a></li>
-          <li></li>
-          <li>jQuery (which is usaually already loaded on the site)</li>
-          <li><a href="https://github.com/carhartl/jquery-cookie" target="blank">jQuery Cookie by carhartl</a> - A minified version (1.4.1) is included in the script.</li>
+          <li>Google Tag Manager</li>
+          <li><a href="#random">Random Number macro</a></li>
+          <li><a href="#eventtag">Google Analytics Event tracking tag</a></li>
+          <li><a href="#eventrule">Custom rule for the event tracking tag</a></li>
+          <li><a href="#macros">Custom macro's to get the data from the dataLayer</a></li>
         </ul>
-
         <p>Code can be at most 15,360 characters. Use an external .js file to load more code.</p>
         
         <p class="text-center"><a class="btn btn-lg btn-success" role="button" href="https://github.com/simonvreeman/a-b-testing-with-google-tag-manager/archive/master.zip"><i class="fa fa-download"></i> Download the free script</a></p>
